@@ -1,11 +1,8 @@
 package com.dvsmedeiros.correiows.controller.impl;
 
-import java.math.BigDecimal;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.rpc.ServiceException;
 
@@ -15,7 +12,6 @@ import org.tempuri.CalcPrecoPrazoWS;
 import org.tempuri.CalcPrecoPrazoWSLocator;
 import org.tempuri.CalcPrecoPrazoWSSoap;
 
-import com.dvsmedeiros.correiows.controller.IFreteFacade;
 import com.dvsmedeiros.correiows.domain.Frete;
 import com.dvsmedeiros.correiows.domain.FreteConfig;
 import com.dvsmedeiros.correiows.domain.FreteRetorno;
@@ -40,7 +36,7 @@ public class CorreioFacade extends AbstractCorreioFacade {
 					config.getEmpresa(),
 					config.getSenha(),
 					config.getServico(),
-					frete.getCepOrigem(),
+					config.getCepOrigem(),
 					frete.getCepDestino(),
 					frete.getPeso(),
 					frete.getFormato(), 
@@ -62,6 +58,8 @@ public class CorreioFacade extends AbstractCorreioFacade {
 					retorno.setPrazo(servico.getPrazoEntrega());
 					retorno.setTipoServico(config.getServicos().get(servico.getCodigo()));
 					resultado.add(retorno);
+				} else {
+					System.out.println(servico.getErro() + " - " + servico.getMsgErro());
 				}
 			}
 		

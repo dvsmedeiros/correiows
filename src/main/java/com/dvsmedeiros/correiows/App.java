@@ -23,15 +23,15 @@ public class App {
 		IFreteFacade facade = new CorreioFacade(config);
 
 		Frete frete = new Frete();
-		frete.setAltura(new BigDecimal(22));
+		frete.setAltura(new BigDecimal(30));
 		frete.setCepOrigem("12226852");
 		frete.setCepDestino("60743410");
 		frete.setComprimento(new BigDecimal(22));
-		frete.setDiametro(new BigDecimal(0));
-		frete.setFormato(1);
+		frete.setDiametro(new BigDecimal(508888888));
+		frete.setFormato(2);
 		frete.setLargura(new BigDecimal(22));
-		frete.setPeso("22");
-		frete.setValorDeclarado(new BigDecimal(200.0));
+		frete.setPeso("30");
+		frete.setValorDeclarado(new BigDecimal(9.0));
 
 		List<FreteRetorno> calculaFrete = facade.calculaFrete(frete);
 
@@ -45,3 +45,31 @@ public class App {
 		}
 	}
 }
+
+/**
+ * BOX 
+ * Altura: MIN = 2cm
+ *         MAX = 105cm
+ * Largura min 11 max 105
+ * Comprimento: min 16 max 105
+ * Diametro: nao tem
+ * peso min 0 max 30
+ * Cep   : Obrigatorio
+ * 
+ * ROLL
+ * Altura: Não tem
+ * Largura: nao tem
+ * Comprimento: min = 18 max = 105
+ * Diametro min 5 max 91
+ * peso min 0 max 30
+ * Cep   : Obrigatorio
+ * 
+ * ENVELOPE
+ * Altura: Não tem
+ * largura: min 11 max 60
+ * Comprimento: min = 16 max = 60cm
+ * Diametro nao tem
+ * peso min 0 max 1 
+ * Cep   : Obrigatorio
+ *         
+ */

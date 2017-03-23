@@ -9,6 +9,7 @@ public class FreteConfig {
 	private String senha;
 	private Boolean emMaos;
 	private Boolean avisoRecebimento;
+	private String cepOrigem;
 
 	public String getEmpresa() {
 		return empresa;
@@ -28,20 +29,20 @@ public class FreteConfig {
 
 	public String getServico() {
 		StringBuilder sb = new StringBuilder();
-		
-		for(Integer key : getServicos().keySet() ){
+
+		for (Integer key : getServicos().keySet()) {
 			sb.append(String.valueOf(key));
 			sb.append(",");
 		}
-		if(sb.toString().endsWith(",")){
+		if (sb.toString().endsWith(",")) {
 			return sb.toString().substring(0, sb.toString().lastIndexOf(","));
 		}
 		return sb.toString();
 	}
 
 	public String getEmMaos() {
-		
-		if(emMaos){
+
+		if (emMaos) {
 			return "S";
 		}
 		return "N";
@@ -52,25 +53,41 @@ public class FreteConfig {
 	}
 
 	public String getAvisoRecebimento() {
-		if(avisoRecebimento){
+		if (avisoRecebimento) {
 			return "S";
 		}
 		return "N";
 	}
 
 	public void setAvisoRecebimento(boolean avisoRecebimento) {
-		
+
 		this.avisoRecebimento = avisoRecebimento;
 	}
-	
+
 	public Map<Integer, String> getServicos() {
-		
+
 		Map<Integer, String> servicos = new HashMap<Integer, String>();
 		servicos.put(40010, "SEDEX");
 		servicos.put(40045, "SEDEX a Cobrar");
 		servicos.put(41106, "PAC");
-		
+
 		return servicos;
+	}
+
+	public String getCepOrigem() {
+		return cepOrigem;
+	}
+
+	public void setCepOrigem(String cepOrigem) {
+		this.cepOrigem = cepOrigem;
+	}
+
+	public void setEmMaos(Boolean emMaos) {
+		this.emMaos = emMaos;
+	}
+
+	public void setAvisoRecebimento(Boolean avisoRecebimento) {
+		this.avisoRecebimento = avisoRecebimento;
 	}
 	
 }
